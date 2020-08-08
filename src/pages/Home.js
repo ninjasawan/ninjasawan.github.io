@@ -31,12 +31,24 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1.5,
   },
   upArrow: {
-    fontSize: 100,
     color: purple[500],
+    fontSize: 100,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 70,
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 40,
+    },
   },
   downArrow: {
-    fontSize: 100,
     color: teal[500],
+    fontSize: 100,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 70,
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 40,
+    },
   },
 }));
 
