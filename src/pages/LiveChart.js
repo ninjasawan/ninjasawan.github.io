@@ -4,9 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AppContainer } from "components";
 import { convertToJson } from "helper";
 
-const url = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_LIVE_CHART_ENDPOINT}`;
-
-const clientSocket = socketIOClient(url);
+const clientSocket = socketIOClient(process.env.REACT_APP_LIVE_CHART_ENDPOINT);
 
 const keys = ["timestamp", "open", "high", "low", "close", "volume"];
 
