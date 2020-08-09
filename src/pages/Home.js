@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { fetchWrapper, convertToJson, getMaxMin } from "helper";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppLoader, DataTable, AppContainer } from "components";
 import moment from "moment";
@@ -9,6 +8,7 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import purple from "@material-ui/core/colors/purple";
 import teal from "@material-ui/core/colors/teal";
+import { useHistoricalData } from "hooks";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -133,30 +133,14 @@ const columns = [
   },
 ];
 
-const keys = ["timestamp", "open", "high", "low", "close", "volume"];
-
 function Home() {
   const classes = useStyles();
-  const [loading, setLoading] = useState(false);
-  const [historicalData, setHistoricalData] = useState([]);
-  const [maxMin, setMaxMin] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    setLoading(true);
-    fetchWrapper
-      .get(`${process.env.REACT_APP_HISTORY_ENDPOINT}?interval=${currentPage}`)
-      .then((response) => {
-        const data = convertToJson(response, keys);
-        setHistoricalData(data);
-        setMaxMin(getMaxMin(data));
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
-  }, [currentPage]);
+  const {
+    loading,
+    historicalData,
+    maxMin,
+    setCurrentPage,
+  } = useHistoricalData();
 
   return (
     <section className={classes.root}>

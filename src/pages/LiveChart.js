@@ -9,7 +9,12 @@ const clientSocket = socketIOClient(process.env.REACT_APP_LIVE_CHART_ENDPOINT);
 const keys = ["timestamp", "open", "high", "low", "close", "volume"];
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  title: {
+    fontSize: 24,
+    fontWeight: 600,
+    margin: "0 0 20px",
+    lineHeight: 1.5,
+  },
 }));
 
 function LiveChart() {
@@ -21,8 +26,9 @@ function LiveChart() {
 
     const stoxData = [];
     clientSocket.on("data", function (data, callback) {
-      stoxData.push(data);
-      setLiveData(convertToJson(stoxData, keys));
+      //stoxData.push(data);
+      //console.log(data);
+      setLiveData(convertToJson([data], keys));
       callback(1);
     });
 
@@ -33,12 +39,12 @@ function LiveChart() {
     return () => clientSocket.emit("unsub", { state: false });
   }, []);
 
-  //console.log({ liveData });
+  //console.log(liveData);
 
   return (
     <section className={classes.root}>
       <AppContainer>
-        <p>LiveChart</p>
+        <h1 className={classes.title}> Upstox Live Chart</h1>
       </AppContainer>
     </section>
   );

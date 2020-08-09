@@ -7,6 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { NavLink } from "react-router-dom";
 import HistoryIcon from "@material-ui/icons/History";
 import TimelineIcon from "@material-ui/icons/Timeline";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 
 const useStyles = makeStyles((theme) => ({
   sidebarContainer: {
@@ -75,6 +76,22 @@ const Sidebar = () => {
             </ListItemIcon>
             <ListItemText
               primary="Historical Records"
+              className={classes.itemText}
+            />
+          </NavLink>
+        </ListItem>
+        <ListItem className={classes.item}>
+          <NavLink
+            exact
+            to="/historical"
+            activeClassName={classes.selected}
+            className={classes.itemLink}
+          >
+            <ListItemIcon className={classes.listIcon}>
+              <TrendingUpIcon className={classes.icon} />
+            </ListItemIcon>
+            <ListItemText
+              primary="Historical HOLC Chart"
               className={classes.itemText}
             />
           </NavLink>
