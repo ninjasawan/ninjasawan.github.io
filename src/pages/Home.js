@@ -8,7 +8,6 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import purple from "@material-ui/core/colors/purple";
 import teal from "@material-ui/core/colors/teal";
-import { useHistoricalData } from "hooks";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -133,14 +132,8 @@ const columns = [
   },
 ];
 
-function Home() {
+function Home({ loading, historicalData, maxMin, setCurrentPage }) {
   const classes = useStyles();
-  const {
-    loading,
-    historicalData,
-    maxMin,
-    setCurrentPage,
-  } = useHistoricalData();
 
   return (
     <section className={classes.root}>

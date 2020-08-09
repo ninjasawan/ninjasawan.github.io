@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppLoader, AppContainer, HolcChart } from "components";
-import { useHistoricalData } from "hooks";
 import SyncIcon from "@material-ui/icons/Sync";
 import { Tooltip as MaterialTooltip, IconButton } from "@material-ui/core";
 
@@ -20,9 +19,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Historical() {
+function Historical({ loading, historicalData, setCurrentPage }) {
   const classes = useStyles();
-  const { loading, historicalData, setCurrentPage } = useHistoricalData();
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
     <section className={classes.root}>
