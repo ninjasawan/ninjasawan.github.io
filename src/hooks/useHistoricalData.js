@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchWrapper, convertToJson, getMaxMin } from "helper";
 
-const keys = ["timestamp", "open", "high", "low", "close", "volume"];
+const keys = ["x", "open", "high", "low", "close", "volume"];
 
 const useHistoricalData = () => {
   const [loading, setLoading] = useState(false);

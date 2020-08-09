@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   ChartComponent,
   SeriesCollectionDirective,
@@ -15,19 +15,7 @@ import {
 } from "@syncfusion/ej2-react-charts";
 
 function HolcChart({ holcData }) {
-  useEffect(() => {
-    for (let i = 0; i < holcData.length; i++) {
-      holcData[i]["timestamp"] = new Date(+holcData[i].timestamp);
-      holcData[i]["open"] = Number(holcData[i].open);
-      holcData[i]["high"] = Number(holcData[i].high);
-      holcData[i]["low"] = Number(holcData[i].low);
-      holcData[i]["close"] = Number(holcData[i].close);
-      holcData[i]["volume"] = Number(holcData[i].volume);
-    }
-  }, [holcData]);
-
   const axisLabelRender = (args) => {
-    console.log(args);
     if (args.axis.title === "Price") {
       args.text = "₹" + args.text;
     }
@@ -89,7 +77,7 @@ function HolcChart({ holcData }) {
           animation={{ enable: true }}
           bearFillColor="#2ecd71"
           bullFillColor="#e74c3d"
-          xName="timestamp"
+          xName="x"
           low="low"
           high="high"
           open="open"

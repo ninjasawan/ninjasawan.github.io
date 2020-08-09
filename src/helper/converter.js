@@ -1,10 +1,14 @@
 export const convertToJson = (data, keys, delim = ",") =>
   data.reduce((initial, current) => {
     const splitedData = current.split(delim);
-    const obj = keys.reduce(
-      (acc, key, index) => (acc = { ...acc, [key]: splitedData[index] }),
-      {}
-    );
+    const obj = keys.reduce((acc, key, index) => {
+      if (key === "x") {
+        acc = { ...acc, [key]: new Date(+splitedData[index]) };
+      } else {
+        acc = { ...acc, [key]: Number(splitedData[index]) };
+      }
+      return acc;
+    }, {});
     return [...initial, obj];
   }, []);
 

@@ -54,16 +54,14 @@ const useStyles = makeStyles((theme) => ({
 const columns = [
   {
     title: "Date",
-    field: "timestamp",
+    field: "x",
     searchable: false,
     grouping: false,
     sorting: true,
     type: "date",
     align: "center",
     render: (rowData) => (
-      <p style={{ margin: 0 }}>
-        {moment(Number(rowData.timestamp)).format("MMM DD, YYYY")}
-      </p>
+      <p style={{ margin: 0 }}>{moment(rowData.x).format("MMM DD, YYYY")}</p>
     ),
   },
   {
@@ -148,22 +146,22 @@ function Home({ loading, historicalData, maxMin, setCurrentPage }) {
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`Open:- ₹${maxMin.maxOpen.open} on ${moment(
-                      Number(maxMin.maxOpen.timestamp)
+                      Number(maxMin.maxOpen.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`High:- ₹${maxMin.maxHigh.high} on ${moment(
-                      Number(maxMin.maxHigh.timestamp)
+                      Number(maxMin.maxHigh.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`Low:- ₹${maxMin.maxLow.low} on ${moment(
-                      Number(maxMin.maxLow.timestamp)
+                      Number(maxMin.maxLow.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`Close:- ₹${maxMin.maxClosed.open} on ${moment(
-                      Number(maxMin.maxClosed.timestamp)
+                      Number(maxMin.maxClosed.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                 </div>
@@ -180,22 +178,22 @@ function Home({ loading, historicalData, maxMin, setCurrentPage }) {
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`Open:- ₹${maxMin.minOpen.open} on ${moment(
-                      Number(maxMin.minOpen.timestamp)
+                      Number(maxMin.minOpen.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`High:- ₹${maxMin.minHigh.high} on ${moment(
-                      Number(maxMin.minHigh.timestamp)
+                      Number(maxMin.minHigh.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`Low:- ₹${maxMin.minLow.low} on ${moment(
-                      Number(maxMin.minLow.timestamp)
+                      Number(maxMin.minLow.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                   <Typography variant="h3" className={classes.values}>
                     {`Close:- ₹${maxMin.minClosed.open} on ${moment(
-                      Number(maxMin.minClosed.timestamp)
+                      Number(maxMin.minClosed.x)
                     ).format("MMM DD, YYYY")}`}
                   </Typography>
                 </div>
